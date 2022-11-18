@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joeserver-deployment
+  labels:
+    app: joeserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: joeserver
+  template:
+    metadata:
+      labels:
+        app: joeserver
+    spec:
+      containers:
+      - name: joeserver
+        image: joeserver:0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8090
